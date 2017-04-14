@@ -10,6 +10,8 @@ public class Drawing : MonoBehaviour {
 	public GameObject other; // the object that is the starting point
 	public GameObject dott; //dots that gonna draw
 	public float timeResolution = 0.2f; // time Resolution 
+	public int index = 0;
+
 	Vector3 start; //start position
 
 
@@ -25,15 +27,30 @@ public class Drawing : MonoBehaviour {
 	
 	void Update()
 	{
-		for (int index = 0; index < 100; index++) 
+		float PrePositionx = 0.0f;
+		float PrePositiony = 0.0f;
+		/*
+		int framenumber = 0;
+		if (framenumber > 1) 
+		{
+			return;
+		}
+
+		framenumber++;
+		*/
+		for (; index < 30;index++) 
+		//while(PrePositiony > 0)
 		{
 			
 			timeResolution += timeResolution;
-			float dx = speed * timeResolution * Mathf.Cos (angle * Mathf.Deg2Rad);
-			float dy = speed * timeResolution * Mathf.Sin (angle * Mathf.Deg2Rad) - (Physics.gravity.magnitude * timeResolution * timeResolution / 2.0f);
-			Vector3 currentPosition = new Vector3 (start.x + dx, start.y + dy, 0); //restrict z value to 0
+			float dx = start.x + speed * timeResolution * Mathf.Cos (angle * Mathf.Deg2Rad);
+			float dy = start.y + speed * timeResolution * Mathf.Sin (angle * Mathf.Deg2Rad) - (Physics.gravity.magnitude * timeResolution * timeResolution / 2.0f);
+
+			Vector3 currentPosition = new Vector3 ((dx+PrePositionx)/2, (dy+PrePositiony)/2, 0); //restrict z value to 0
 			Debug.Log (currentPosition);
 			Instantiate (dott, currentPosition, transform.rotation);
+			PrePositionx = dx;
+			PrePositiony = dy;
 		}
 	}
 
