@@ -29,15 +29,7 @@ public class Drawing : MonoBehaviour {
 	{
 		float PrePositionx = 0.0f;
 		float PrePositiony = 0.0f;
-		/*
-		int framenumber = 0;
-		if (framenumber > 1) 
-		{
-			return;
-		}
 
-		framenumber++;
-		*/
 		for (; index < 30;index++) 
 		//while(PrePositiony > 0)
 		{
@@ -53,7 +45,5 @@ public class Drawing : MonoBehaviour {
 			PrePositiony = dy;
 		}
 	}
-
-	// Update is called once per frame
 
 }
